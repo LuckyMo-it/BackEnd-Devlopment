@@ -14,4 +14,11 @@ GET http://localhost:8383/dashboard
 
 request are seperated by ###
 
-## crud is nothing but 
+## crud is nothing but http verbs
+CRUD(http method)- create(post) read(get) update(put) delete(delete ) 
+
+
+## middleware
+
+this are the way to configure request and responses
+eg `app.use(express.json())`

@@ -7,11 +7,14 @@ const PORT=8383
 //HTTP Verbs and routs
 //this routes are called endpoints
 const data={
-    name:"hajime",
-    skill:"boxing"
+    users:['Hijame']
 
 }
 //CRUD(Verbs)- Create(Post) Read(GET) Update(Put) Delete(delete)
+
+//Middleware
+//this config server for incoming json request
+app.use(express.json())
 
 //TYPE 1:WebSite Endpoints:
 app.get("/",(req,res)=>{
@@ -22,18 +25,21 @@ res.send(`
     <h1>Data</h1>
     <p>${JSON.stringify(data)}
     </p>
+    <a href="/dashboard" >DashBoard</a>
     </body>
     `)
 
 })
 
-app.post("/api/data",(req,res)=>{
-    const newData=req.body
-})
 
 app.get("/dashboard",((req,res)=>{
     console.log("wow very dangourous")
-    res.send("<h1>Dashboard</h1>")
+    res.send(`
+        <body>
+        <h1>Dashboard</h1>
+        <a href="/">Home</a>
+        </body>
+        `)
 }))
 //website endpoints (these endpoints are for sending back html and they typically come when a user enters a url in  a browser)
 //api endpoints 
@@ -42,7 +48,20 @@ app.get("/dashboard",((req,res)=>{
 //TYPE-2:API Endpoints
 app.get('/api/data',(req,res)=>{
     
-res.send(data)
+    res.status(599).send(data)
+})
+app.post("/api/data",(req,res)=>{
+    //someone want to create a user when they click on sign up
+    const newData=req.body
+    console.log(newData)
+    data.users.push(newData.name)
+    res.sendStatus(201)
+})
+app.delete("/api/data",(req,res)=>{
+    const newData=req.body
+    data.users.pop()
+    console.log("user is deleted from last")
+    res.sendStatus(203)
 })
 
 
