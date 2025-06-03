@@ -5,6 +5,9 @@ import express from 'express'
 import path,{dirname} from 'path'
 import { json } from 'stream/consumers'
 import { fileURLToPath } from 'url'
+import authRoutes from './Routes/authRoutes.js'
+import todoRoutes from './Routes/todoRoutes.js'
+
 const app=express()
 const PORT=process.env.PORT ||5000
 
@@ -22,6 +25,9 @@ app.get("/",(req,res)=>{
     res.sendFile(path.join(__dirname,'public','index.html'))
 })
 
+//modularising endpoints 
+app.use('/auth',authRoutes)
+app.use('/todos',todoRoutes)
 
 
 app.listen(PORT ,()=>{

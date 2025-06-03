@@ -15,3 +15,9 @@
 then i used dirname() to get directory name `xyz`
 
 - and used middleware express.static() to tell that i need file from one abover foler ../public
+
+
+## I modularized routes using express.Router()
+
+made different routes and using them in server.js using 
+`express.use('/auth',authRoutes)`
