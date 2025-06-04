@@ -14,6 +14,8 @@ router.post('/register', (req, res) => {
     const hashedPassword = bcrypt.hashSync(password, 8)
     //save the user and hashed password
     try {
+
+        
         const insertUser = db.prepare(`
             insert into user (username,password) 
             values(?,?)

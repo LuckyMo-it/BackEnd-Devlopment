@@ -43,3 +43,22 @@ but POST not
 `app.use('/route',middleware,routing)`
 
 - I used `jwt.verify()` which takes callback which have *decoded* argument which decoded id from token 
+
+## Req.params /:id
+- we can send json but there is another way
+
+# req.query /?task="omg"
+
+- /123?task="omg"
+
+
+## Added delete and update 
+```js
+router.delete('/:id',(req,res)=>{
+    const{id}=req.params
+    const{userId}=req.userId
+    const deleteTodos=db.prepare(`
+        delete from todos where id=? and user_id=?`)
+        deleteTodos.run(id,userId)
+})
+```

@@ -17,5 +17,9 @@ Content-Type: application/json
     "username":"mohit",
     "password":"1234"
 }
+### fetch all todos
+GET http://localhost:5000/todos
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQ5MDM2NTkzLCJleHAiOjE3NDkxMjI5OTN9.Em6ndpyKgzlDBSvuFGllBex7j-dqWMWRuIDpmSN2p34
+
 
 
