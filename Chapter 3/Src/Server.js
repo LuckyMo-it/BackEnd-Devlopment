@@ -7,6 +7,7 @@ import { json } from 'stream/consumers'
 import { fileURLToPath } from 'url'
 import authRoutes from './Routes/authRoutes.js'
 import todoRoutes from './Routes/todoRoutes.js'
+import authMiddleware from './Middleware/authMiddleware.js'
 
 const app=express()
 const PORT=process.env.PORT ||5000
@@ -27,7 +28,7 @@ app.get("/",(req,res)=>{
 
 //modularising endpoints 
 app.use('/auth',authRoutes)
-app.use('/todos',todoRoutes)
+app.use('/todos',authMiddleware,todoRoutes)
 
 
 app.listen(PORT ,()=>{

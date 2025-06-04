@@ -21,3 +21,25 @@ then i used dirname() to get directory name `xyz`
 
 made different routes and using them in server.js using 
 `express.use('/auth',authRoutes)`
+
+
+## Bcrypt 
+- it convert password to irreversable encrypted password
+
+## Prepare statment
+
+- `db.prepare` run sql queries and i used `?` as placeholder 
+- then run it using `varName.run(,.., placeholerVariable)`
+
+## JWT
+- when user register i give him a token using `jwt.sign()`
+
+- i used login as **POST** because **GET** added that sensitive info to url
+but POST not 
+
+
+## Authentication Middleware
+
+`app.use('/route',middleware,routing)`
+
+- I used `jwt.verify()` which takes callback which have *decoded* argument which decoded id from token 

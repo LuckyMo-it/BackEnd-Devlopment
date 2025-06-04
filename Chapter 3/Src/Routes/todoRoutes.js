@@ -3,7 +3,14 @@ import db from '../db.js'
 
 const router=express.Router()
 //get all todos
-router.get('/',(req,res)=>{})
+router.get('/',(req,res)=>{
+
+    const getTodos=db.prepare(`
+        select *from todos where user_id=?
+        `)
+    const todos=getTodos.all(req.userId)
+    res.json(todos)
+})
 router.post('/',(req,res)=>{})
 
 //update a todo
